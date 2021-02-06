@@ -14,7 +14,8 @@ public class App
         
         Map<String, String> properties = new HashMap<>();
         // When this property is set to "true" - statements are cached, even if the resultSetType should be changing.
-        properties.put("eclipselink.jdbc.property.cachePrepStmts", "false");
+        // Change this value to "false" to get the queries executing correctly.
+        properties.put("eclipselink.jdbc.property.cachePrepStmts", "true");
         properties.put("eclipselink.jdbc.property.useServerPrepStmts", "true");
         
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(
