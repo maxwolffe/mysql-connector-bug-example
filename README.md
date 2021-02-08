@@ -16,7 +16,7 @@ Running the same sql query `SELECT * FROM testdb.Cars` twice:
 ## What I expect to happen
 The behaviour from MySQL Connector 8.0.19. 
 
-First query returns results 1-10
+First query returns results 0-10
 Second query returns results 2-10
 
 ## What is happening
