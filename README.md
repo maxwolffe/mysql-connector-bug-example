@@ -31,8 +31,6 @@ This is new as of mysql-connector-java 8.0.20.
 1. Use msyql-connector-j 8.0.19
 2. Set `eclipselink.jdbc.property.cachePrepStmts` to `false` - this prevents the caching and returns the correct resultSetType.
 
-# Possible fix
-
 ## Proposed root-cause
 This appears to be caused by the introduction of a [runtime ResultSetType check in MySQL Connector 8.0.20](https://dev.mysql.com/doc/relnotes/connector-j/8.0/en/news-8-0-20.html), combined with the cachePrepStmts setting causing the resultSetType value to be overridden.
 
