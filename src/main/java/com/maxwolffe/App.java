@@ -1,7 +1,6 @@
 package com.maxwolffe;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -25,29 +24,29 @@ public class App
         EntityManager eman = emf.createEntityManager();
 
         try {
-
-            String sql = "SELECT c FROM Car c";
             String nativeSql = "SELECT * FROM testdb.Cars";
-            
-            Query query = eman.createQuery(sql);
-            List<Car> cars = query.getResultList();
 
             // This first statement and resultSet is of type FORWARD_ONLY
             Query nativeQuery = eman.createNativeQuery(nativeSql);
             nativeQuery.getResultList();
             
-            // EJBQ queries have the same issue. 
-            //Query query2 = eman.createQuery(sql);
-            //query2.setFirstResult(1);
-            //query2.getResultList(); 
-            
-            // The second statement should be of type "INSENTITIVE_SCROLL" because of the "setFirstResult" call. But it's cached as FORWARD_ONLY.
+            // The second statement should be of type "INSENSITIVE_SCROLL" because of the "setFirstResult" call. But it's cached as FORWARD_ONLY.
             Query nativeQuery2 = eman.createNativeQuery(nativeSql);
             nativeQuery2.setFirstResult(2);
             nativeQuery2.getResultList();
             
             System.out.println();
             System.out.println("Queries successful!");
+
+            // EJBQ queries have the same issue.
+
+            // String sql = "SELECT c FROM Car c";
+            // Query query = eman.createQuery(sql);
+            // List<Car> cars = query.getResultList();
+
+            // Query query2 = eman.createQuery(sql);
+            // query2.setFirstResult(1);
+            // query2.getResultList(); 
 
         } finally {
 
